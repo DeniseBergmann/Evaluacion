@@ -1,0 +1,78 @@
+<div class="departamento-container">
+  <div class="header-container">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="assets/logoempre.png" alt="Icono Empresa" class="logo-icon">
+        <h1 class="header-title">GESTOR DE EMPRESAS</h1>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a routerLink="/empresas">Empresas</a></li>
+      <li><a routerLink="/departamentos">Departamentos</a></li>
+      <li><a routerLink="/colaboradores">Colaboradores</a></li>
+    </ul>
+  </nav>
+
+  <section class="departamento-modificar">
+    <h2>DEPARTAMENTOS > CREAR</h2>
+
+    <div *ngIf="mensajeExito" class="alert alert-success">
+      {{ mensajeExito }}
+    </div>
+
+    <div *ngIf="mensajeError" class="alert alert-danger">
+      {{ mensajeError }}
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre"><img src="../../assets/Departamentosnegro.png" alt="Nombre"> Nombre:</label>
+        <input id="nombre" [(ngModel)]="departamento.nombre" name="nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="direccion"><img src="../../assets/dirección.png" alt="Dirección"> Dirección:</label>
+        <input id="direccion" [(ngModel)]="departamento.direccion" name="direccion" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono"><img src="../../assets/telefono.png" alt="Teléfono"> Teléfono:</label>
+        <input id="telefono" [(ngModel)]="departamento.telefono" name="telefono" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empresa"><img src="../../assets/EmpresasNegro.png" alt="Empresa"> Empresa:</label>
+        <select id="empresa" [(ngModel)]="departamento.empresaId" name="empresa" required>
+          <option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nombre }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion"><img src="../../assets/description.png" alt="Descripción"> Descripción:</label>
+        <textarea id="descripcion" [(ngModel)]="departamento.descripcion" name="descripcion" maxlength="500"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="status"><img src="../../assets/status.png" alt="Status"> Status:</label>
+        <input id="status" [(ngModel)]="departamento.status" name="status" required>
+      </div>
+
+      <div class="form-group">
+        <label for="creadoPor"><img src="../../assets/creado.png" alt="Creado por"> Usuario:</label>
+        <input id="creadoPor" [(ngModel)]="departamento.creadoPor" name="creadoPor" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn guardar">Guardar</button>
+      </div>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>© 2024 Gestor de Empresas. Denise Bergmann</p>
+  </footer>
+</div>

@@ -1,0 +1,50 @@
+<div class="colaborador-container">
+  <div class="header-container">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="../../assets/logoempre.png" alt="Icono Empresa" class="logo-icon">
+        <h1 class="header-title">GESTOR DE EMPRESAS</h1>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a routerLink="/empresas">Empresas</a></li>
+      <li><a routerLink="/departamentos">Departamentos</a></li>
+      <li><a routerLink="/colaboradores">Colaboradores</a></li>
+    </ul>
+  </nav>
+
+  <section *ngIf="colaboradores.length > 0; else noColaboradores" class="colaborador-list">
+    <div class="colaborador-card" *ngFor="let colaborador of colaboradores">
+      <div class="colaborador-info">
+        <h2>{{ colaborador.nombre }} {{ colaborador.apellido }}</h2>
+        <p><img src="../../assets/cargo.png" alt="Cargo"> {{ colaborador.posicion }}</p>
+        <p><img src="../../assets/age.png" alt="Edad"> {{ colaborador.edad }}</p>
+        <p><img src="../../assets/email.png" alt="E-mail"> {{ colaborador.email }}</p>
+        <p><img src="../../assets/EmpresasNegro.png" alt="Empresa"> {{ colaborador.empresaNombre }}</p>
+        <p><img src="../../assets/Departamentosnegro.png" alt="Departamento"> {{ colaborador.departamentoNombre }}</p>
+        <p><img src="../../assets/status.png" alt="Estado"> {{ colaborador.status }}</p>
+        <p><img src="../../assets/creado.png" alt="Creado por"> {{ colaborador.creadoPor }}</p>
+        <p><img src="../../assets/creado.png" alt="Fecha de creación"> {{ colaborador.creadoFecha }}</p>
+        <p><img src="../../assets/modificador.png" alt="Modificado por"> {{ colaborador.modificadoPor }}</p>
+        <p><img src="../../assets/fechamodificar.png" alt="Fecha de modificación"> {{ colaborador.modificadoFecha }}</p>
+      </div>
+      <div class="colaborador-actions">
+        <button class="btn modificar" (click)="modificarColaborador(colaborador.id)">Modificar</button>
+        <button class="btn eliminar" (click)="eliminarColaborador(colaborador.id)">Eliminar</button>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #noColaboradores>
+    <p>No hay colaboradores creados.</p>
+  </ng-template>
+
+  <button class="btn crear" (click)="crearColaborador()">Crear</button>
+
+  <div class="footer">
+    <p>© 2024 Gestor de Empresas. Denise Bergmann</p>
+  </div>
+</div>

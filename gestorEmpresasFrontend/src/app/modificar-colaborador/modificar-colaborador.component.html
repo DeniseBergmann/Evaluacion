@@ -1,0 +1,90 @@
+<div class="colaborador-container">
+  <div class="header-container">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="assets/logoempre.png" alt="Icono Empresa" class="logo-icon">
+        <h1 class="header-title">GESTOR DE EMPRESAS</h1>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a routerLink="/empresas">Empresas</a></li>
+      <li><a routerLink="/departamentos">Departamentos</a></li>
+      <li><a routerLink="/colaboradores">Colaboradores</a></li>
+    </ul>
+  </nav>
+
+  <section class="modificar-colaborador">
+    <h2>Colaboradores > Modificar</h2>
+
+    <div *ngIf="mensajeExito" class="alert alert-success">
+      {{ mensajeExito }}
+    </div>
+
+    <div *ngIf="mensajeError" class="alert alert-danger">
+      {{ mensajeError }}
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre"><img src="assets/EmpleadosNegro.png" alt="Nombre">Nombre:</label>
+        <input id="nombre" [(ngModel)]="colaborador.nombre" name="nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="apellido"><img src="assets/EmpleadosNegro.png" alt="Apellido">Apellido:</label>
+        <input id="apellido" [(ngModel)]="colaborador.apellido" name="apellido" required>
+      </div>
+
+      <div class="form-group">
+        <label for="posicion"><img src="assets/cargo.png" alt="Cargo">Cargo:</label>
+        <input id="posicion" [(ngModel)]="colaborador.posicion" name="posicion" required>
+      </div>
+
+      <div class="form-group">
+        <label for="edad"><img src="assets/age.png" alt="Edad">Edad:</label>
+        <input id="edad" [(ngModel)]="colaborador.edad" name="edad" type="number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email"><img src="assets/email.png" alt="Email">E-mail:</label>
+        <input id="email" [(ngModel)]="colaborador.email" name="email" type="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empresa"><img src="assets/EmpresasNegro.png" alt="Empresa">Empresa:</label>
+        <select id="empresa" [(ngModel)]="colaborador.empresaNombre" name="empresa" required>
+          <option *ngFor="let empresa of empresas" [value]="empresa.nombre">{{ empresa.nombre }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="departamento"><img src="assets/Departamentosnegro.png" alt="Departamento">Departamento:</label>
+        <select id="departamento" [(ngModel)]="colaborador.departamentoNombre" name="departamento" required>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.nombre">{{ departamento.nombre }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="status"><img src="assets/status.png" alt="Estado">Status:</label>
+        <input id="status" [(ngModel)]="colaborador.status" name="status" required>
+      </div>
+
+      <div class="form-group">
+        <label for="usuario"><img src="assets/creado.png" alt="Usuario">Usuario:</label>
+        <input id="usuario" [(ngModel)]="colaborador.usuario" name="usuario" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn guardar">Guardar</button>
+      </div>
+    </form>
+  </section>
+
+  <div class="footer">
+    <p>© 2024 Gestor de Empresas. Denise Bergmann</p>
+  </div>
+</div>

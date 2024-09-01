@@ -1,0 +1,47 @@
+<div class="departamento-container">
+  <div class="header-container">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="../../assets/logoempre.png" alt="Icono Empresa" class="logo-icon">
+        <h1 class="header-title">GESTOR DE EMPRESAS</h1>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a routerLink="/empresas">Empresas</a></li>
+      <li><a routerLink="/departamentos">Departamentos</a></li>
+      <li><a routerLink="/colaboradores">Colaboradores</a></li>
+    </ul>
+  </nav>
+
+  <section class="departamento-list" *ngIf="departamentos.length > 0; else noDepartamentos">
+    <div class="departamento-card" *ngFor="let departamento of departamentos">
+      <div class="departamento-info">
+        <h2>{{ departamento.nombre }}</h2>
+        <p><img src="../../assets/dirección.png" alt="Dirección"> {{ departamento.direccion }}</p>
+        <p><img src="../../assets/telefono.png" alt="Teléfono"> {{ departamento.telefono }}</p>
+        <p><img src="../../assets/status.png" alt="Estado"> {{ departamento.status }}</p>
+        <p><img src="../../assets/creado.png" alt="Creado por"> {{ departamento.creadoPor }}</p>
+        <p><img src="../../assets/Fechacrear.png" alt="Fecha de creación"> {{ departamento.creadoFecha }}</p>
+        <p><img src="../../assets/modificador.png" alt="Modificado por"> {{ departamento.modificadoPor }}</p>
+        <p><img src="../../assets/fechamodificar.png" alt="Fecha de modificación"> {{ departamento.modificadoFecha }}</p>
+      </div>
+      <div class="departamento-actions">
+        <button class="btn modificar" (click)="modificarDepartamento(departamento.id)">Modificar</button>
+        <button class="btn eliminar" (click)="eliminarDepartamento(departamento.id)">Eliminar</button>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #noDepartamentos>
+    <p>No hay departamentos cargados.</p>
+  </ng-template>
+
+  <button class="btn crear" (click)="crearDepartamento()">Crear</button>
+
+  <footer class="footer">
+    <p>© 2024 Gestor de Empresas. Denise Bergmann</p>
+  </footer>
+</div>
