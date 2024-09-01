@@ -53,8 +53,6 @@ export class CrearColaboradorComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.colaborador);
-    return;
     this.colaboradoresService.createColaborador(this.colaborador).subscribe(
       response => {
         this.mensajeExito = 'Colaborador creado con éxito';
